@@ -43,7 +43,7 @@ const SignInPage = () => {
     setIsLoading(true);
 
     try {
-      const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
+      const baseURL = process.env.NEXT_PUBLIC_API_URL;
       const response = await axios.post(`${baseURL}/api/auth/login`, formData);
       const token = response.data?.token;
       localStorage.setItem("token", token);

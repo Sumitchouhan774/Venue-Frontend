@@ -62,7 +62,7 @@ function CreateVenueModal({ onClose, onVenueCreated }) {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/venues`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/venues`,
         {
           ...formData,
           capacity: parseInt(formData.capacity),
@@ -361,7 +361,7 @@ function VenueDetailsModal({ venue, onClose }) {
     const fetchVenueBookings = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/venues/${venue._id}/bookings`,
+          `${process.env.NEXT_PUBLIC_API_URL}/api/venues/${venue._id}/bookings`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -649,7 +649,7 @@ function BlockVenueModal({ venue, onClose, onVenueBlocked }) {
 
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/venues/${venue._id}/block`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/venues/${venue._id}/block`,
         {
           startDate: blockDates.startDate,
           endDate: blockDates.endDate,
@@ -813,7 +813,7 @@ export default function AdminPage() {
   const fetchVenues = async () => {
     try {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/venues`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/venues`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
