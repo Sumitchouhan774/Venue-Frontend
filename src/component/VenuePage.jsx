@@ -40,7 +40,7 @@ function BookingModal({ venue, onClose, onBook }) {
     setLoading(true);
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/bookings`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/bookings`,
         {
           venueId: venue._id,
           startDate,
@@ -199,7 +199,7 @@ function MyBookingsModal({ onClose }) {
     const fetchMyBookings = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/bookings/my-bookings`,
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/bookings/my-bookings`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -388,7 +388,7 @@ export default function VenuesPage() {
   useEffect(() => {
     const fetchVenues = async () => {
       try {
-        const url = process.env.NEXT_PUBLIC_API_URL
+        const url = process.env.NEXT_PUBLIC_API_BASE_URL
         const response = await axios.get(`${url}/api/venues`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`, // replace with real token
